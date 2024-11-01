@@ -142,5 +142,7 @@ if __name__ == '__main__':
 
         ajouter_admin()  # Appelle la fonction pour ajouter l'administrateur
         logging.info("Vérification et ajout de l'administrateur effectué.")
-        
-    app.run(debug=False)
+    # Utiliser le port fourni par Render
+    port = int(os.environ.get("PORT", 5000))  # 5000 est la valeur par défaut pour un environnement local
+    app.run(host='0.0.0.0', port=port, debug=False)    
+
