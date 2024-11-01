@@ -18,7 +18,7 @@ from dotenv import load_dotenv
 
 # Importer les variables d'environnement
 load_dotenv()  # Charge les variables d'environnement depuis le fichier .env
-POSTGRESQL_CONN = os.getenv("POSTGRESQL_CONN")
+POSTGRESQL_RENDER_CONN = os.getenv("POSTGRESQL_RENDER_CONN")
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 
