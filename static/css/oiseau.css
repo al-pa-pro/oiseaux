@@ -1,0 +1,153 @@
+/* Styles généraux pour les titres */
+h2, h3 {
+    color: #333; /* Couleur des titres */
+}
+
+/* Style pour les sections */
+.section-container {
+    border: 1px solid #ccc; /* Bordure grise légère */
+    border-radius: 8px; /* Coins légèrement arrondis */
+    padding: 15px; /* Espacement interne */
+    margin-bottom: 20px; /* Espacement entre les sections */
+    background-color: #fdfdfd; /* Fond très léger */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05); /* Ombre subtile */
+}
+
+/* Style pour les titres de section */
+.section-title {
+    font-size: 24px; /* Taille du texte */
+    font-weight: bold; /* Texte en gras */
+    color: #333; /* Couleur du texte */
+    margin-bottom: 10px; /* Espacement sous le titre */
+    padding-bottom: 5px; /* Espacement interne */
+    border-bottom: 2px solid #4CAF50; /* Ligne sous le titre */
+}
+
+/* Styles pour les images, audio et vidéo */
+.bird-images, .bird-audios, .bird-videos {
+    display: flex; /* Utilisation de Flexbox */
+    gap: 10px; /* Espacement entre les éléments */
+}
+
+/* Styles pour les détails des oiseaux */
+.bird-details {
+    margin: 20px; /* Marge autour de la section */
+}
+
+/* Styles pour les fichiers d'upload */
+input[type="file"] {
+    margin: 10px 0; /* Espacement autour des champs de fichier */
+}
+
+/* Styles pour aligner les boutons sous les médias */
+.bird-controls {
+    display: flex; /* Utilisation de Flexbox */
+    justify-content: space-between; /* Espacement entre les boutons */
+    margin-top: 5px; /* Marge au-dessus des boutons */
+}
+
+/* Styles pour les boutons */
+.btn-valider, .btn-cacher, .btn-refuser {
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur de la souris */
+    transition: background-color 0.3s ease; /* Animation de changement de couleur */
+}
+
+.btn-valider {
+    background-color: #f6f347; /* Couleur vert foncé */
+    color: white; /* Couleur du texte */
+    font-size: 12px; /* Taille de la police */
+    padding: 5px 10px; /* Espacement interne */
+    border: none; /* Pas de bordure */
+}
+
+.btn-valider:hover {
+    background-color: #45a049; /* Couleur plus foncée au survol */
+}
+
+.btn-cacher {
+    background-color: grey; /* Couleur grise */
+    color: white; /* Couleur du texte */
+    font-size: 10px; /* Taille de la police plus petite */
+    padding: 3px 7px; /* Espacement interne */
+    border: none; /* Pas de bordure */
+}
+
+.btn-cacher:hover {
+    background-color: darkgrey; /* Couleur plus foncée au survol */
+}
+
+.btn-refuser {
+    background-color: transparent; /* Arrière-plan transparent */
+    color: red; /* Couleur rouge pour le texte */
+    font-size: 20px; /* Taille de la croix */
+    padding: 0; /* Pas d'espacement interne */
+    border: none; /* Pas de bordure */
+}
+
+.btn-refuser:hover {
+    color: darkred; /* Couleur plus foncée au survol */
+}
+
+/* Style général du formulaire d'ajout d'image */
+.form-container {
+    border: 1px solid #e0e0e0; /* Bordure grise très claire */
+    border-radius: 10px; /* Coins arrondis */
+    padding: 20px; /* Espacement interne */
+    background-color: #f9f9f9; /* Fond très léger */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+    margin-top: 20px; /* Espacement au-dessus du formulaire */
+}
+
+/* Style pour le label dans le formulaire */
+.form-container label {
+    display: block; /* Affiche le label sur une nouvelle ligne */
+    font-size: 14px; /* Taille du texte réduite */
+    margin-bottom: 6px; /* Espacement sous le label */
+    color: #666; /* Couleur du texte légèrement plus claire */
+    font-weight: 600; /* Texte en gras pour une meilleure lisibilité */
+}
+
+/* Style pour l'input de fichier dans le formulaire */
+.form-container input[type="file"] {
+    margin-bottom: 12px; /* Espacement sous l'input */
+    padding: 8px; /* Espacement interne réduit */
+    border: 1px solid #ccc; /* Bordure grise */
+    border-radius: 5px; /* Coins arrondis */
+    font-size: 12px; /* Taille du texte réduite */
+    width: 100%; /* Largeur pleine */
+    transition: border-color 0.3s; /* Transition pour le changement de couleur de la bordure */
+}
+
+/* Change la couleur de la bordure au focus */
+.form-container input[type="file"]:focus {
+    border-color: #4CAF50; /* Bordure verte au focus */
+    outline: none; /* Retire l'outline par défaut */
+}
+
+/* Style pour le bouton d'ajout dans le formulaire */
+.form-container button {
+    background-color: #4CAF50; /* Couleur de fond verte */
+    color: white; /* Couleur du texte en blanc */
+    border: none; /* Pas de bordure */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 8px 12px; /* Espacement interne réduit */
+    font-size: 14px; /* Taille de la police pour le texte */
+    cursor: pointer; /* Curseur pointer pour indiquer que c'est cliquable */
+    transition: background-color 0.3s, transform 0.2s; /* Transition douce pour le survol et effet de transformation */
+    
+}
+
+/* Effet de survol pour le bouton */
+.form-container button:hover {
+    background-color: #45a049; /* Couleur plus foncée au survol */
+    transform: translateY(-2px); /* Légère élévation au survol */
+}
+
+
+/* Ajout d'un effet de focus sur le bouton */
+.form-container button:focus {
+    outline: none; /* Retire l'outline par défaut */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Ombre verte autour du bouton au focus */
+}
+

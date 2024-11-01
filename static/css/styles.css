@@ -1,0 +1,139 @@
+/* styles.css */
+
+/* Général */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background-color: #4CAF50; /* Couleur de fond du header et footer */
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+footer {
+    position: relative; /* Fixe le footer en bas de la page */
+    bottom: 0; /* Aligne le footer au bas de la fenêtre */
+    left: 0; /* Assure que le footer commence à gauche */
+    z-index: 1000; /* Assure que le footer est au-dessus d'autres éléments */
+}
+
+header h1, footer p {
+    margin: 0;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* Liens */
+a {
+    color: #4CAF50; /* Couleur du texte des liens */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #388E3C; /* Couleur du texte des liens au survol */
+}
+
+/* Boutons */
+button {
+    background-color: #f44336; /* Couleur de fond du bouton */
+    color: white;
+    border: none;
+    padding: 5px 10px; /* Taille du bouton */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px; /* Taille du texte du bouton */
+    margin: 0;
+    cursor: pointer;
+    border-radius: 5px; /* Coins arrondis du bouton */
+}
+
+button:hover {
+    background-color: #c62828; /* Couleur du bouton au survol */
+}
+
+button:focus {
+    outline: none;
+}
+
+
+.flash-container {
+    position: fixed; /* Positionnement fixe pour superposer au centre */
+    top: 50%; /* Centre verticalement */
+    left: 50%; /* Centre horizontalement */
+    transform: translate(-50%, -50%); /* Ajuste le positionnement */
+    z-index: 1000; /* Assure que le flash est au-dessus d'autres éléments */
+    width: 80%; /* Largeur du message flash */
+    max-width: 500px; /* Largeur maximale */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour un effet de profondeur */
+}
+
+.flash {
+    padding: 20px; /* Espacement interne */
+    margin: 10px 0; /* Espacement entre les messages */
+    border-radius: 5px; /* Coins arrondis */
+    position: relative; /* Pour positionner le bouton de fermeture */
+    display: flex; /* Utilisation de flex pour aligner le contenu */
+    justify-content: space-between; /* Espace entre le texte et le bouton */
+    align-items: center; /* Aligne le texte et le bouton */
+}
+
+.flash.success {
+    background-color: #d4edda; /* Couleur de fond pour le succès */
+    color: #155724; /* Couleur du texte */
+}
+
+.flash.error {
+    background-color: #f8d7da; /* Couleur de fond pour l'erreur */
+    color: #721c24; /* Couleur du texte */
+}
+
+.close-btn {
+    background: none; /* Pas de fond */
+    border: none; /* Pas de bordure */
+    color: inherit; /* Hérite la couleur du texte */
+    font-size: 20px; /* Taille de la croix */
+    cursor: pointer; /* Curseur de pointeur pour indiquer cliquable */
+    margin-left: 10px; /* Espacement à gauche de la croix */
+}

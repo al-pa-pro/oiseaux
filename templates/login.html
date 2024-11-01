@@ -1,0 +1,37 @@
+
+
+{% extends 'base.html' %}
+
+
+{% block title %}Login - Monde Enchanté des Oiseaux{% endblock %}
+
+{% block h1 %}Connectez vous au monde enchanté des oiseaux{% endblock %}
+
+{% block content %}
+
+<form action="{{ url_for('auth_routes.login') }}" method="POST">
+    <div>
+        <label for="username">Nom d'utilisateur:</label>
+        <input type="text" id="username" name="username" required>
+    </div>
+    <div>
+        <label for="password">Mot de passe:</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+    <button type="submit">Se connecter</button>
+</form>
+
+<p>Pas encore de compte ? <a href="{{ url_for('auth_routes.gotosignup') }}">Inscris-toi ici</a>.</p>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+{% endblock %}
+

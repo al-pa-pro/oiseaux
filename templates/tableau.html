@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block css %} 
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tableau.css') }}"> 
+
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+
+{% endblock %}
+
+{% block title %}Recensement des jolies oiseaux{% endblock %}
+
+{% block h1 %}recensement des jolies oiseaux{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="mt-5">Recensement des oiseaux présents au Nigeria</h1>
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th scope="col">Date d'Observation</th>
+                <th scope="col">Localisation</th>
+                <th scope="col">Nom Commun</th>
+                <th scope="col">Nom Scientifique</th>
+                <th scope="col">Nombre Observé</th>
+                {% if current_user.is_authenticated %}
+                <th scope="col">Fiche</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for oiseau in oiseaux %}
+            <tr>
+                <td>{{ oiseau['obsDt'] }}</td>
+                <td>{{ oiseau['location'] }}</td>
+                <td>{{ oiseau['comName'] }}</td>
+                <td>{{ oiseau['sciName'] }}</td>
+                <td>{{ oiseau['howMany'] }}</td>
+                {% if current_user.is_authenticated %}
+                <td>
+                    {% if oiseau['fiche_id']!=0 %}
+                    <a href="{{ url_for('oiseau_routes.afficher_oiseau', id=oiseau['fiche_id']) }}" class="btn btn-primary">Voir Fiche</a>
+                        
+                    {% else %}
+                    <a href="{{ url_for('main_routes.formulaire', nom=oiseau['comName'], nom_scientifique=oiseau['sciName'], code_oiseau=oiseau['speciesCode']) }}" class="btn btn-secondary">Ajouter Fiche</a>
+                    {% endif %}
+                </td>
+                {% endif %}
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- JS de jQuery et DataTables -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Initialiser DataTables
+        $('.table').DataTable({
+            "order": [[4, 'desc']]  // Trier par la 5ème colonne (date)
+        });
+    });
+</script>
+
+
+{% endblock %}

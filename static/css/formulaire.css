@@ -1,0 +1,95 @@
+/* formulaire.css */
+
+/* Centrage du formulaire sur la page */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Assure que le formulaire est centré verticalement */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%; /* Largeur du formulaire */
+    max-width: 600px; /* Largeur maximale du formulaire */
+    margin: 2em; /* Marge autour du formulaire */
+    padding: 20px;
+    border: 1px solid #ccc; /* Bordure du formulaire */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour un effet 3D */
+    background-color: #f9f9f9; /* Couleur de fond */
+}
+
+/* Style des labels et des inputs */
+form label {
+    font-weight: bold;
+    margin-bottom: 0.5em; /* Espacement sous le label */
+}
+
+form input[type="text"],
+form textarea,
+form input[type="file"] {
+    width: 100%; /* Largeur complète pour tous les champs */
+    padding: 10px;
+    margin-bottom: 1em; /* Espacement entre les champs */
+    border: 1px solid #ddd; /* Bordure des champs */
+    border-radius: 4px; /* Coins arrondis des champs */
+}
+
+form textarea {
+    height: 150px; /* Hauteur spécifique pour la zone de texte */
+    resize: vertical; /* Permet le redimensionnement vertical */
+}
+
+/* Style des boutons */
+form input[type="submit"] {
+    background-color: #4CAF50; /* Couleur de fond */
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Espacement interne du bouton */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px; /* Taille du texte */
+    margin-top: 10px; /* Espacement au-dessus du bouton */
+    cursor: pointer;
+    border-radius: 5px; /* Coins arrondis du bouton */
+}
+
+form input[type="submit"]:hover {
+    background-color: #45a049; /* Couleur au survol */
+}
+
+/* Style pour les champs de fichier */
+form input[type="file"] {
+    padding: 5px; /* Espacement interne spécifique pour les fichiers */
+    background-color: #e0e0e0; /* Couleur de fond par défaut */
+}
+
+form input[type="file"]::-webkit-file-upload-button {
+    background: #4CAF50; /* Couleur du bouton de téléchargement */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px; /* Coins arrondis */
+}
+
+form input[type="file"]::-webkit-file-upload-button:hover {
+    background: #45a049; /* Couleur du bouton au survol */
+}
+
+form input[type="file"]::file-selector-button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+form input[type="file"]::file-selector-button:hover {
+    background: #45a049;
+}

@@ -1,0 +1,81 @@
+
+
+
+
+{% extends 'base.html' %}
+
+
+{% block title %}Modifier description - Monde Enchanté des Oiseaux{% endblock %}
+
+{% block css %} <link rel="stylesheet" href="{{ url_for('static', filename='css/formulaire.css') }}"> {% endblock %}
+
+{% block h1 %} Que dire de ce bel oiseau ?{% endblock %}
+
+{% block content %}
+
+<form action="{{ url_for('media_routes.modifier_description', id=id) }}" method="post">
+
+    <!-- Champ pour personnaliser le prompt -->
+    <label for="nom_oiseau">Nom de l'oiseau:</label>
+    <input type="text" id="nom_oiseau" name="nom_oiseau" required value="{{ nom_oiseau }}"> <br>
+
+
+    <label for="prompt">Personnaliser le prompt (optionnel) :</label>
+    <input type="text" id="prompt" placeholder="Modifier le prompt si nécessaire">
+
+    <label for="description">Nouvelle Description:</label>
+    <textarea id="description" name="description" required>{{ description }}</textarea><br>
+    <button type="button" onclick="generateDescription()">Générer une description</button>
+
+
+    <input type="submit" value="Modifier">
+
+
+
+
+    <!-- Message de chargement -->
+    <div id="loadingMessage" style="display:none;">En chargement...</div>
+
+
+
+</form>
+
+
+
+
+
+<script>
+    function generateDescription() {
+        const birdName = document.querySelector('#nom_oiseau').value;
+        const prompt = document.querySelector('#prompt').value || `Voici une description courte d'un oiseau nommé ${birdName}:`;
+        
+        // Afficher le message de chargement
+        const loadingMessage = document.querySelector('#loadingMessage');
+        loadingMessage.style.display = 'block';
+
+        fetch('/generate_description', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nom_oiseau: birdName, custom_prompt: prompt })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Cacher le message de chargement
+            loadingMessage.style.display = 'none';
+
+            if (data.error) {
+                alert("Erreur lors de la génération: " + data.error);
+            } else {
+                document.querySelector('#description').value = data.description;
+            }
+        })
+        .catch(error => {
+            // Cacher le message de chargement en cas d'erreur
+            loadingMessage.style.display = 'none';
+            alert("Erreur lors de la génération: " + error);
+        });
+    }
+</script>
+
+
+{% endblock %}

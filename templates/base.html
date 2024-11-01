@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mon Application{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    {% block css %}{% endblock %}
+
+</head>
+<body>
+{% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        <div class="flash-container">
+            {% for category, message in messages %}
+                <div class="flash {{ category }}">
+                    <span class="flash-message">{{ message }}</span>
+                    <button class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+
+    <header>
+
+        {% set edit_mode = session.get('edit_mode', False) %}
+
+
+        <h1>{% block h1 %}Mon Application{% endblock %}</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="{{ url_for('oiseau_routes.liste_oiseaux') }}">Liste des Oiseaux</a></li>
+                <li><a href="{{ url_for('pipeline_routes.tableau') }}">Recensement</a></li>
+                {% if current_user.is_authenticated %}
+                    {% if current_user.role == 'admin' %}
+                    <li><a href="{{ url_for('admin_routes.liste_propositions') }}">Liste des propositions</a></li>
+                    {% endif %}
+                <li><a href="{{ url_for('main_routes.formulaire') }}">Soumettre un Oiseau</a></li>
+                <li><a href="{{ url_for('auth_routes.dashboard') }}">Tableau de bord</a></li>
+                <li><a href="{{ url_for('auth_routes.logout') }}">Déconnexion</a></li>
+                {% else %}
+                <li><a href="{{ url_for('auth_routes.login') }}">Connexion</a></li>
+                <li><a href="{{ url_for('auth_routes.gotosignup') }}">Inscription</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('oiseau_routes.changer_edit_mode') }}" class="btn">
+            {% if session.get('edit_mode', False) %}
+                Désactiver le mode édition
+            {% else %}
+                Activer le mode édition
+            {% endif %}
+        </a>
+        {% endif %}
+
+        {% block content %}
+        <!-- Le contenu spécifique à chaque page ira ici -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Monde Enchanté des Oiseaux. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

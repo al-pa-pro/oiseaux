@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Tableau de bord - Monde echanté des oiseaux{% endblock %}
+
+{% block h1 %}Tableau de vol{% endblock %}
+
+{% block content %}
+    <p>Accède à toutes les fonctionnalités ici.</p>
+    <a href="{{ url_for('auth_routes.logout') }}">Déconnexion</a>
+
+    
+{% endblock %}

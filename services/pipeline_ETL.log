@@ -1,0 +1,45 @@
+2024-10-30 10:00:09,931 - INFO - Données récupérées pour Lagos, Nigeria
+2024-10-30 10:00:10,678 - INFO - Données récupérées pour Abuja, Nigeria
+2024-10-30 10:00:10,683 - INFO - Données concaténées avec succès.
+2024-10-30 10:00:10,690 - INFO - Nettoyage des données terminé.
+2024-10-30 10:00:10,692 - ERROR - Erreur lors du nettoyage des chaînes UTF-8: 'bool' object has no attribute 'encode'
+2024-10-30 10:00:10,692 - INFO - Connexion à la base de données SQLite...
+2024-10-30 10:00:10,698 - INFO - Récupération des speciesCode avec une fiche dans SQLite...
+2024-10-30 10:00:10,706 - INFO - 8 espèces avec une fiche trouvées dans SQLite.
+2024-10-30 10:00:10,706 - INFO - Ajout de la colonne 'fiche_id' dans le DataFrame final_df...
+2024-10-30 10:00:10,708 - INFO - Aperçu des données avec la colonne 'fiche_id':
+2024-10-30 10:00:10,710 - INFO -    speciesCode  fiche_id
+0      spepig1      11.0
+1      reedov1      12.0
+2      laudov1       0.0
+3      afpswi1       0.0
+4      graher1       0.0
+5      blakit1       0.0
+6      grewoo2       0.0
+7       rorpar       0.0
+8      afpfly1       0.0
+9      piapia1       5.0
+10     combul2       9.0
+11     varsun2       0.0
+12     broman1       0.0
+13      reccor       0.0
+14     gyhspa1       0.0
+2024-10-30 10:00:10,860 - INFO - La table 'observations' existe déjà. Aucun enregistrement inséré.
+2024-10-30 10:00:10,867 - INFO - Doublon trouvé et supprimé: spepig1 à 2024-10-19 06:47 à Abuja, Nigeria
+2024-10-30 10:00:10,872 - INFO - Doublon trouvé et supprimé: reedov1 à 2024-10-19 06:47 à Abuja, Nigeria
+2024-10-30 10:00:10,875 - INFO - Doublon trouvé et supprimé: laudov1 à 2024-10-19 06:47 à Abuja, Nigeria
+2024-10-30 10:00:10,876 - INFO - Doublon trouvé et supprimé: afpswi1 à 2024-10-19 06:47 à Abuja, Nigeria
+2024-10-30 10:00:10,879 - INFO - Doublon trouvé et supprimé: graher1 à 2024-10-19 06:47 à Abuja, Nigeria
+2024-10-30 10:00:10,880 - INFO - Doublon trouvé et supprimé: blakit1 à 2024-10-19 06:47 à Abuja, Nigeria
+2024-10-30 10:00:10,882 - INFO - Doublon trouvé et supprimé: grewoo2 à 2024-10-19 06:47 à Abuja, Nigeria
+2024-10-30 10:00:10,883 - INFO - Doublon trouvé et supprimé: rorpar à 2024-10-19 06:47 à Abuja, Nigeria
+2024-10-30 10:00:10,885 - INFO - Doublon trouvé et supprimé: afpfly1 à 2024-10-19 06:47 à Abuja, Nigeria
+2024-10-30 10:00:10,889 - INFO - Doublon trouvé et supprimé: piapia1 à 2024-10-19 06:47 à Abuja, Nigeria
+2024-10-30 10:00:10,890 - INFO - Doublon trouvé et supprimé: combul2 à 2024-10-19 06:47 à Abuja, Nigeria
+2024-10-30 10:00:10,892 - INFO - Doublon trouvé et supprimé: varsun2 à 2024-10-19 06:47 à Abuja, Nigeria
+2024-10-30 10:00:10,893 - INFO - Doublon trouvé et supprimé: broman1 à 2024-10-19 06:47 à Abuja, Nigeria
+2024-10-30 10:00:10,895 - INFO - Doublon trouvé et supprimé: reccor à 2024-10-19 06:47 à Abuja, Nigeria
+2024-10-30 10:00:10,896 - INFO - Doublon trouvé et supprimé: gyhspa1 à 2024-10-19 06:47 à Abuja, Nigeria
+2024-10-30 10:00:10,897 - INFO - Aucune donnée à insérer dans la base PostgreSQL.
+2024-10-30 10:00:10,897 - INFO - Connexion à SQLite fermée.
+2024-10-30 10:00:10,898 - INFO - Connexion à PostgreSQL fermée.

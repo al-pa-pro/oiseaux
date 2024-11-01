@@ -1,0 +1,201 @@
+
+
+{% extends 'base.html' %}
+
+{% block css %} <link rel="stylesheet" href="{{ url_for('static', filename='css/oiseau.css') }}"> {% endblock %}
+
+{% block title %}Oiseau - Monde Enchanté des Oiseaux{% endblock %}
+
+{% block h1 %} {{ oiseau[2] }}
+
+{% if current_user.is_authenticated and current_user.role == 'admin' %}
+
+{% if oiseau.status == 'en attente' %}
+<form action="{{ url_for('oiseau_routes.valider_proposition', id=oiseau[0], type='nom', typeid=oiseau[0]) }}" method="POST" style="display:inline;">
+    <button type="submit" class="btn-valider">Valider</button>
+</form>
+{% endif %}
+
+{% if oiseau.status == 'approuvé' %}
+<form action="{{ url_for('oiseau_routes.cacher_proposition', id=oiseau[0], type='nom', typeid=oiseau[0]) }}" method="POST" style="display:inline;">
+    <button type="submit" class="btn-cacher">Cacher</button>
+{% endif %}
+
+<form action="{{ url_for('oiseau_routes.supprimer_oiseau', id=oiseau[0], type='nom',typeid=oiseau[0]) }}" method="POST" style="display:inline;">
+    <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet oiseau ?');">Supprimer</button>
+</form>
+
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+<section class="section-container">
+    <h2 class="section-title" >Description générale</h2>
+
+
+    <p>{{ oiseau[4] |safe }}</p> <!-- Description de l'oiseau -->
+
+
+
+    {% if current_user.is_authenticated and edit_mode and current_user.role == 'admin' %}
+    <form action="{{ url_for('media_routes.modifier_description', id=oiseau[0]) }}" method="get">
+        <button type="submit">Modifier la description</button>
+    </form>            
+    {% endif %}
+
+</section>
+
+<section class="section-container">
+
+    <h3 class="section-title">Images</h3>
+    <div class="bird-images">
+
+        {% for image in images %}
+
+        <div class="bird-medias">
+            <img src="{{ url_for('static', filename='uploads/' ~ image[2]) }}" alt="Image de {{ oiseau[1] }}">
+
+            <div class="bird-controls">
+
+            {% if current_user.is_authenticated and current_user.role == 'admin' %}
+            <!-- Boutons pour valider ou refuser l'image -->
+            {% if image.status == 'en attente' %}
+            <form action="{{ url_for('oiseau_routes.valider_proposition', id=oiseau[0], type='image', typeid=image[0]) }}" method="POST" style="display:inline;">
+                <button type="submit" class="btn-valider">Valider</button>
+            </form>
+            {% endif %}
+            {% if image.status == 'approuvé' %}
+            <form action="{{ url_for('oiseau_routes.cacher_proposition', id=oiseau[0], type='image', typeid=image[0]) }}" method="POST" style="display:inline;">
+                <button type="submit" class="btn-cacher">Cacher</button>
+            </form>
+            {% endif %}
+            <form action="{{ url_for('oiseau_routes.supprimer_oiseau', id=oiseau[0], type='image', typeid=image[0]) }}" method="POST" class="refuser-form">
+                <button type="submit" class="refuser-button" title="Refuser">&times;</button>
+            </form>
+            
+            </div>
+
+
+        {% endif %}
+
+        </div>
+
+        {% endfor %}
+        
+        {% if current_user.is_authenticated and edit_mode %}   
+        <div class="form-container">
+        <form action="{{ url_for('media_routes.ajouter_image', oiseau_id=oiseau[0]) }}" method="post" enctype="multipart/form-data">
+            <label for="image">Ajouter une image:</label>
+            <input type="file" id="image" name="image" multiple>
+            <button type="submit">Ajouter</button>
+        </form>
+        </div>
+        {% endif %}
+    </div>
+
+</section>
+
+
+<section class="section-container">
+
+    <h3 class="section-title">Chants</h3>
+    <div class="bird-audios">
+        {% for audio in audios %}
+        <div class="bird-medias">
+            <audio controls>
+                <source src="{{ url_for('static', filename='uploads/' ~ audio[2]) }}" type="audio/mpeg">
+                Votre navigateur ne supporte pas l'élément audio.
+            </audio>
+
+            <div class="bird-controls">
+
+            {% if current_user.is_authenticated and current_user.role == 'admin' %}
+            <!-- Boutons pour valider ou refuser l'audio -->
+            {% if audio.status == 'en attente' %}
+            <form action="{{ url_for('oiseau_routes.valider_proposition', id=oiseau[0], type='audio', typeid=audio[0]) }}" method="POST" style="display:inline;">
+                <button type="submit" class="btn-valider">Valider</button>
+            </form>
+            {% endif %}
+            {% if audio.status == 'approuvé' %}
+            <form action="{{ url_for('oiseau_routes.cacher_proposition', id=oiseau[0], type='audio', typeid=audio[0]) }}" method="POST" style="display:inline;">
+                <button type="submit" class="btn-cacher">Cacher</button>
+            {% endif %}
+            <form action="{{ url_for('oiseau_routes.supprimer_oiseau', id=oiseau[0], type='audio', typeid=audio[0]) }}" method="POST" class="refuser-form">
+                <button type="submit" class="refuser-button" title="Refuser">&times;</button>
+            </form>
+
+            </div>  
+
+        {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+
+
+        {% if current_user.is_authenticated and edit_mode %} 
+        <div class="form-container">
+        <form action="{{ url_for('media_routes.ajouter_audio', oiseau_id=oiseau[0]) }}" method="post" enctype="multipart/form-data">
+            <label for="audio">Ajouter un audio:</label>
+            <input type="file" id="audio" name="audio" multiple>
+            <button type="submit">Ajouter</button>
+        </form>
+        </div>
+        {% endif %}
+    </div>
+
+</section>
+
+<section class="section-container">
+
+    <h3 class="section-title">Vidéos</h3>
+    <div class="bird-videos">
+        {% for video in videos %}
+        <div class="bird-medias">
+            <video controls>
+                <source src="{{ url_for('static', filename='uploads/' ~ video[2]) }}" type="video/mp4">
+                Votre navigateur ne supporte pas l'élément vidéo.
+            </video>
+
+            <div class="bird-controls">
+            {% if current_user.is_authenticated and current_user.role == 'admin' %}
+            <!-- Boutons pour valider ou refuser l'audio -->
+            {% if video.status == 'en attente' %}
+            <form action="{{ url_for('oiseau_routes.valider_proposition', id=oiseau[0], type='video', typeid=video[0]) }}" method="POST" style="display:inline;">
+                <button type="submit" class="btn-valider">Valider</button>
+            </form>
+            {% endif %}
+            {% if video.status == 'approuvé' %}
+            <form action="{{ url_for('oiseau_routes.cacher_proposition', id=oiseau[0], type='video', typeid=video[0]) }}" method="POST" style="display:inline;">
+                <button type="submit" class="btn-cacher">Cacher</button>
+            </form>
+            {% endif %}
+            <form action="{{ url_for('oiseau_routes.supprimer_oiseau', id=oiseau[0], type='video', typeid=video[0]) }}" method="POST" class="refuser-form">
+                <button type="submit" class="refuser-button" title="Refuser">&times;</button>
+            </form>
+            </div>
+
+        {% endif %}
+
+        </div>  
+
+        {% endfor %}
+        {% if current_user.is_authenticated and edit_mode %} 
+        <div class="form-container">
+        <form action="{{ url_for('media_routes.ajouter_video', oiseau_id=oiseau[0]) }}" method="post" enctype="multipart/form-data">
+            <label for="video">Ajouter des vidéos:</label>
+            <input type="file" id="video" name="video" multiple>
+            <button type="submit">Ajouter</button>
+        </form>
+        </div>
+        {% endif %}
+    </div>
+
+</section>
+
+{% endblock %}

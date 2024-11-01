@@ -1,0 +1,26 @@
+
+
+
+{% extends 'base.html' %}
+
+
+{% block title %}Liste des oiseaux - Monde Enchanté des Oiseaux{% endblock %}
+
+{% block h1 %}Contemplez ces magnifiques oiseaux{% endblock %}
+
+{% block content %}
+
+<ul>
+    {% for proposition in propositions %}
+        <li>
+            {% if current_user.is_authenticated and current_user.role == 'admin' %}
+            <a href="{{ url_for('oiseau_routes.afficher_oiseau', id=proposition[0]) }}">{{ proposition[2] }}</a>
+            <form action="{{ url_for('oiseau_routes.supprimer_oiseau', id=proposition[0],type='nom',typeid=proposition[0]) }}" method="POST" style="display:inline;">
+                <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet oiseau ?');">Supprimer</button>
+            </form>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
