@@ -34,7 +34,6 @@ from routes.pipeline_routes import pipeline_routes
 
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
-app.config['DEBUG'] = False
 
 # Configuration du logging
 def setup_logging():
@@ -144,4 +143,4 @@ if __name__ == '__main__':
         ajouter_admin()  # Appelle la fonction pour ajouter l'administrateur
         logging.info("Vérification et ajout de l'administrateur effectué.")
         
-    app.run(debug=True)
+    app.run(debug=False)
