@@ -8,7 +8,7 @@ import os
 
 # Importer les variables d'environnement
 load_dotenv()  # Charge les variables d'environnement depuis le fichier .env
-POSTGRESQL_CONN = os.getenv("POSTGRESQL_CONN")
+POSTGRESQL_RENDER_CONN = os.getenv("POSTGRESQL_RENDER_CONN")
 
 
 # Configuration de base du logging
@@ -18,7 +18,7 @@ pipeline_routes = Blueprint('pipeline_routes', __name__)
 
 # Connexion à la base de données PostgreSQL
 try:
-    engine = create_engine(POSTGRESQL_CONN)
+    engine = create_engine(POSTGRESQL_RENDER_CONN)
     logging.info("Connexion à la base de données PostgreSQL réussie.")
 except Exception as e:
     logging.error("Erreur lors de la connexion à la base de données : %s", str(e))

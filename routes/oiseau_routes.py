@@ -10,7 +10,7 @@ import os
 
 # Importer les variables d'environnement
 load_dotenv()  # Charge les variables d'environnement depuis le fichier .env
-POSTGRESQL_CONN = os.getenv("POSTGRESQL_CONN")
+POSTGRESQL_RENDER_CONN = os.getenv("POSTGRESQL_RENDER_CONN")
 
 
 # Configuration du logging
@@ -118,7 +118,7 @@ def valider_proposition(id, type, typeid):
 
         if code:  # Vérifier si un résultat a été trouvé
             # Connexion à PostgreSQL via SQLAlchemy
-            postgresql_conn = create_engine(POSTGRESQL_CONN, client_encoding='utf8')
+            postgresql_conn = create_engine(POSTGRESQL_RENDER_CONN, client_encoding='utf8')
 
             # Requête SQL pour mettre à jour "fiche_id"
             sql = text("""
@@ -190,7 +190,7 @@ def cacher_proposition(id, type, typeid):
 
         if code:  # Vérifier si un résultat a été trouvé
             # Connexion à PostgreSQL via SQLAlchemy
-            postgresql_conn = create_engine(POSTGRESQL_CONN, client_encoding='utf8')
+            postgresql_conn = create_engine(POSTGRESQL_RENDER_CONN, client_encoding='utf8')
 
             # Requête SQL pour mettre à jour "fiche_id"
             sql = text("""
@@ -243,7 +243,7 @@ def supprimer_oiseau(id, type, typeid):
 
         if code and status=="approuvé":  # Vérifier si un résultat a été trouvé
             # Connexion à PostgreSQL via SQLAlchemy
-            postgresql_conn = create_engine(POSTGRESQL_CONN, client_encoding='utf8')
+            postgresql_conn = create_engine(POSTGRESQL_RENDER_CONN, client_encoding='utf8')
 
             # Requête SQL pour mettre à jour "fiche_id"
             sql = text("""

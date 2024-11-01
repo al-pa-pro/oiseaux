@@ -16,7 +16,8 @@ from dotenv import load_dotenv
 
 # Importer les variables d'environnement
 load_dotenv()  # Charge les variables d'environnement depuis le fichier .env
-POSTGRESQL_CONN = os.getenv("POSTGRESQL_CONN")
+POSTGRESQL_LOCAL_CONN = os.getenv("POSTGRESQL_LOCAL_CONN")
+POSTGRESQL_RENDER_CONN = os.getenv("POSTGRESQL_RENDER_CONN")
 EBIRD_API_KEY = os.getenv("EBIRD_API_KEY")
 
 
@@ -39,7 +40,7 @@ locations = [
 ]
 
 # Connexion à la base de données PostgreSQL
-engine = create_engine(POSTGRESQL_CONN, client_encoding='utf8')
+engine = create_engine(POSTGRESQL_RENDER_CONN, client_encoding='utf8')
 
 # Initialisation d'une liste pour stocker les résultats
 all_data = []
