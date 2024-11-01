@@ -34,6 +34,7 @@ from routes.pipeline_routes import pipeline_routes
 
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
+app.config['DEBUG'] = False
 
 # Configuration du logging
 def setup_logging():

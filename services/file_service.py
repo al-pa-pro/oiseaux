@@ -45,4 +45,5 @@ class Config:
         logging.info("Dossier de téléchargement déjà existant : '%s'", UPLOAD_FOLDER)
 
     DATABASE = os.path.join(dossier_parent, 'BDDsqlite', 'oiseaux.db')  # Chemin vers la base de données
+
     logging.info("Base de données définie : '%s'", DATABASE)
